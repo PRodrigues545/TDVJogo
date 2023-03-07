@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/Character4.png","C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/bin/DesktopGL/Character4.xnb","TextureProcessor","Texture2DContent",1668,8817,0,2026207
+"C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/Crate_Brown.png","C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/bin/DesktopGL/Crate_Brown.xnb","TextureProcessor","Texture2DContent",1064,16469,0,005543
+"C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/EndPoint_Blue.png","C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/bin/DesktopGL/EndPoint_Blue.xnb","TextureProcessor","Texture2DContent",592,4181,0,0054085
+"C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/File.spritefont","C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/bin/DesktopGL/File.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0,1493847
+"C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/Wall_Black.png","C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/bin/DesktopGL/Wall_Black.xnb","TextureProcessor","Texture2DContent",1437,16469,0,005404
