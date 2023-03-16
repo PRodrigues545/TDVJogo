@@ -29,3 +29,12 @@ C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Conten
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Crate_Brown.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\EndPoint_Blue.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Wall_Black.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character1.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character10.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character2.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character3.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character5.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character6.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character7.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character8.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character9.xnb

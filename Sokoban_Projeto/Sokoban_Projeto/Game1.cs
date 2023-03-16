@@ -4,8 +4,13 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace Sokoban_Projeto
 {
+    public enum Direction
+    {
+        Up, Down, Left, Right // 0, 1, 2, 3
+    }
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -14,11 +19,13 @@ namespace Sokoban_Projeto
         private int nrLinhas = 0;
         private int nrColunas = 0;
         //private char[,] level;
-        private Texture2D player, dot, box, wall; //Load images Texture
+        private Texture2D dot, box, wall; //Load images Texture
+        private Texture2D[] player;
         private Player sokoban;
       
         public List<Point> boxes;
         public char[,] level;
+        public Direction direction = Direction.Down;
 
         int tileSize = 64; //potencias de 2 (operações binárias)
 
@@ -48,11 +55,15 @@ namespace Sokoban_Projeto
 
             // TODO: use this.Content to load your game content here
 
-            player = Content.Load<Texture2D>("Character4");
             dot = Content.Load<Texture2D>("EndPoint_Blue");
             box = Content.Load<Texture2D>("Crate_Brown");
             wall = Content.Load<Texture2D>("Wall_Black");
 
+            player = new Texture2D[4];
+            player[(int)Direction.Down] = Content.Load<Texture2D>("Character4");
+            player[(int)Direction.Up] = Content.Load<Texture2D>("Character7");
+            player[(int)Direction.Left] = Content.Load<Texture2D>("Character1");
+            player[(int)Direction.Right] = Content.Load<Texture2D>("Character2");
         }
 
         protected override void Update(GameTime gameTime)
@@ -61,6 +72,10 @@ namespace Sokoban_Projeto
                 Exit();
 
             // TODO: Add your update logic here
+
+            if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize(); //Game Restart
+
+            if (Victory()) Exit(); // FIXME: Change current level
 
             sokoban.Update(gameTime);
 
@@ -106,8 +121,7 @@ namespace Sokoban_Projeto
             }
             position.X = sokoban.Position.X * tileSize; //posição do Player
             position.Y = sokoban.Position.Y * tileSize; //posição do Player
-            _spriteBatch.Draw(player, position, Color.White); //desenha o Player
-           
+            _spriteBatch.Draw(player[(int)direction], position, Color.White); //desenha o Player           
             foreach (Point b in boxes)
             {
                 position.X = b.X * tileSize;
@@ -163,5 +177,15 @@ namespace Sokoban_Projeto
             return true;
             /* The same as: return level[x,y] != 'X' && !HasBox(x,y); */
         }
+
+        public bool Victory()
+        {
+            foreach (Point b in boxes) // pecorrer a lista das caixas
+            {
+                if (level[b.X, b.Y] != '.') return false; // verifica se há caixas sem pontos
+            }
+            return true;
+        }
+
     }
 }
