@@ -38,3 +38,5 @@ C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Conten
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character7.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character8.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character9.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\File1.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\level2.txt

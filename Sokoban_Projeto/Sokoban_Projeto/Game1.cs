@@ -32,10 +32,18 @@ namespace Sokoban_Projeto
         private int nrLinhas = 0;
         private int nrColunas = 0;
         private SpriteFont font;
+        private SpriteFont font1;
         private Texture2D dot, box, wall; //Load images Texture 
         //private Texture2D[] player;
         private Player sokoban;
         //private char[,] level;
+        private string[] levelNames = { "level2.txt" };//, "level1.txt" }; // Level list
+        private int currentLevel = 0; // Current level
+        private double levelTime = 0f;
+        private int liveCount = 3;
+        private bool rDown = false; // if R is still pressed down
+        private bool isWin = false;
+
 
         public const int tileSize = 64; //potencias de 2 (operações binárias)
 
@@ -54,15 +62,14 @@ namespace Sokoban_Projeto
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            LoadLevel("level1.txt");
-            _graphics.PreferredBackBufferHeight = tileSize * level.GetLength(1); //definição da altura
+            //LoadLevel("level1.txt");
+            LoadLevel(levelNames[currentLevel]);
+            _graphics.PreferredBackBufferHeight = tileSize * (1 + level.GetLength(1)); //definição da altura
             _graphics.PreferredBackBufferWidth = tileSize * level.GetLength(0); //definição da largura
             _graphics.ApplyChanges(); //aplica a atualização da janela
-
             sokoban.LoadContents();
-
             base.Initialize();
+
 
         }
 
@@ -71,6 +78,7 @@ namespace Sokoban_Projeto
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // Use the name of your sprite font file here instead of 'File'.
             font = Content.Load<SpriteFont>("File");
+            font1 = Content.Load<SpriteFont>("File1");
             //player = Content.Load<Texture2D>("Character4");
             dot = Content.Load<Texture2D>("EndPoint_Blue");
             box = Content.Load<Texture2D>("Crate_Brown");
@@ -88,16 +96,54 @@ namespace Sokoban_Projeto
 
         protected override void Update(GameTime gameTime)
         {
+            // increment the timer according to the elapsed time between invocations to Update.
+            //levelTime += gameTime.ElapsedGameTime.TotalSeconds;
+            if (!isWin) levelTime += gameTime.ElapsedGameTime.TotalSeconds;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here
 
-            if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize(); // Game restart
+            //if (Keyboard.GetState().IsKeyDown(Keys.R)) Initialize(); // Game restart
+            if (!rDown && Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                rDown = true;
+                liveCount--;
+                if (isWin || liveCount < 0)
+                {
+                    // Reset level
+                    currentLevel = 0;
+                    levelTime = 0f;
+                    liveCount = 3;
+                    isWin = false;
+                }
+                Initialize(); // Game restart
+            }
+            else if (Keyboard.GetState().IsKeyUp(Keys.R))
+            {
+                rDown = false;
+            }
 
-            if (Victory()) Exit(); // FIXME: Change current level
 
-            sokoban.Update(gameTime);
+
+
+            //if (Victory()) Exit(); // FIXME: Change current level
+            if (Victory())
+            {
+                if (currentLevel < levelNames.Length - 1)
+                {
+                    currentLevel++;
+                    Initialize();
+                }
+                else
+                {
+                    //Exit(); // FIXME: Win screen
+                    isWin = true;
+                }
+            }
+            //sokoban.Update(gameTime);
+            if (!isWin) sokoban.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -111,6 +157,18 @@ namespace Sokoban_Projeto
             base.Draw(gameTime);
 
             _spriteBatch.Begin();
+            // Draw UI
+
+            //_spriteBatch.DrawString(font, // Tipo de letra
+            //                        "Tempo Decorrido = ", // Texto
+            //                        new Vector2(5, level.GetLength(1) * tileSize + 5), // Posição do texto
+            //                        Color.White, // Cor da letra
+            //                        0f, //Rotação
+            //                        Vector2.Zero, // Origem
+            //                        2f, // Escala
+            //                        SpriteEffects.None, //Sprite effect (FlipHorizontally)
+            //                        0); // Ordenar sprites
+
             _spriteBatch.DrawString(font, "O texto que quiser", new Vector2(0, 40), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Linhas = {nrLinhas}", new Vector2(0, 0), Color.Black);
             _spriteBatch.DrawString(font, $"Numero de Colunas = {nrColunas}", new Vector2(0, 20), Color.Black);
@@ -140,18 +198,62 @@ namespace Sokoban_Projeto
                 }
             }
 
-            sokoban.Draw(_spriteBatch);
-
-            //position.X = sokoban.Position.X * tileSize; //posição do Player
-            //position.Y = sokoban.Position.Y * tileSize; //posição do Player
-            //_spriteBatch.Draw(player[(int) direction], position, Color.White); //desenha o Player
-
             foreach (Point b in boxes)
             {
                 position.X = b.X * tileSize;
                 position.Y = b.Y * tileSize;
                 _spriteBatch.Draw(box, position, Color.White);
             }
+
+            _spriteBatch.DrawString(font, // Tipo de letra
+                                    $"Time: {levelTime:F2}", //string.Format("Time: {0:F2}", levelTime) // Texto
+                                    new Vector2(5, level.GetLength(1) * tileSize + 10), // Posição do texto
+                                    Color.White, // Cor da letra
+                                    0f, //Rotação
+                                    Vector2.Zero, // Origem
+                                    2f, // Escala
+                                    SpriteEffects.None, //FlipHorizontally, //Sprite effect
+                                    0); // Ordenar sprites
+
+            string lives = $"Lives: {liveCount}";
+            Point measure = font.MeasureString(lives).ToPoint();
+            int posX = level.GetLength(0) * tileSize - measure.X * 2 - 5;
+            _spriteBatch.DrawString(font, // Tipo de Letra
+                    lives, // Texto
+                    new Vector2(posX, level.GetLength(1) * tileSize + 10), // Posição do texto
+                    Color.Coral, //Cor da Letra
+                    0f, //Rotação
+                    Vector2.Zero, // Origem
+                    2f, // Escala
+                    SpriteEffects.None, //FlipHorizontally, //Sprite effect
+                    0); // Ordenar sprites
+
+            if (isWin)
+            {
+                Vector2 windowSize = new Vector2(
+                _graphics.PreferredBackBufferWidth,
+                _graphics.PreferredBackBufferHeight);
+                // Transparent Layer
+                Texture2D pixel = new Texture2D(GraphicsDevice, 1, 1); // Texture of 1 x 1 pixel
+                pixel.SetData(new[] { Color.White }); // unique pixel is white
+                _spriteBatch.Draw(pixel,
+                new Rectangle(Point.Zero, windowSize.ToPoint()),
+                new Color(Color.Green, 0.5f));
+                // Draw Win Message
+                string win = $"You took {levelTime:F1} seconds to Win!";
+                Vector2 winMeasures = font1.MeasureString(win) / 2f;
+                Vector2 windowCenter = windowSize / 2f;
+                Vector2 pos = windowCenter - winMeasures;
+                _spriteBatch.DrawString(font, win, pos, Color.Black, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+            }
+
+            sokoban.Draw(_spriteBatch);
+
+            //position.X = sokoban.Position.X * tileSize; //posição do Player
+            //position.Y = sokoban.Position.Y * tileSize; //posição do Player
+            //_spriteBatch.Draw(player[(int) direction], position, Color.White); //desenha o Player
+
+          
 
             _spriteBatch.End();
 
