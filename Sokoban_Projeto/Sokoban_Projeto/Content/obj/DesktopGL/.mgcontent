@@ -18,9 +18,11 @@
     <File>C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/EndPoint_Blue.png</File>
     <File>C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/File.spritefont</File>
     <File>C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/File1.spritefont</File>
+    <File>C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/sokoban_ss.png</File>
     <File>C:/Programação/TDVJogo/Sokoban_Projeto/Sokoban_Projeto/Content/Wall_Black.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

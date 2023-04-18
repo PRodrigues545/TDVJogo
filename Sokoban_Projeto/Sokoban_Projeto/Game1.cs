@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using IPCA.Monogame;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Numerics;
 using System.Reflection.Emit;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
+using IPCA.Monogame;
 
 
 namespace Sokoban_Projeto
@@ -33,7 +35,7 @@ namespace Sokoban_Projeto
         private int nrColunas = 0;
         private SpriteFont font;
         private SpriteFont font1;
-        private Texture2D dot, box, wall; //Load images Texture 
+        //private Texture2D dot, box, wall; //Load images Texture 
         //private Texture2D[] player;
         private Player sokoban;
         //private char[,] level;
@@ -43,6 +45,8 @@ namespace Sokoban_Projeto
         private int liveCount = 3;
         private bool rDown = false; // if R is still pressed down
         private bool isWin = false;
+        private SpriteSheet _sheet;
+
 
 
         public const int tileSize = 64; //potencias de 2 (operações binárias)
@@ -80,9 +84,10 @@ namespace Sokoban_Projeto
             font = Content.Load<SpriteFont>("File");
             font1 = Content.Load<SpriteFont>("File1");
             //player = Content.Load<Texture2D>("Character4");
-            dot = Content.Load<Texture2D>("EndPoint_Blue");
-            box = Content.Load<Texture2D>("Crate_Brown");
-            wall = Content.Load<Texture2D>("Wall_Black");
+            //dot = Content.Load<Texture2D>("EndPoint_Blue");
+            //box = Content.Load<Texture2D>("Crate_Brown");
+            //wall = Content.Load<Texture2D>("Wall_Black");
+            _sheet = new SpriteSheet(this, "sokoban_ss");
 
             //player = new Texture2D[4];
             //player[(int) Direction.Down] = Content.Load<Texture2D>("Character4");
@@ -189,20 +194,37 @@ namespace Sokoban_Projeto
                         //    _spriteBatch.Draw(box, position, Color.White);
                         //    break;
                         case '.':
-                            _spriteBatch.Draw(dot, position, Color.White);
-                            break;
+                            //_spriteBatch.Draw(dot, position, Color.White);
+                            Rectangle dotSize = _sheet["EndPoint_Blue"];
+                            Vector2 delta = new Vector2(tileSize - dotSize.Width, tileSize - dotSize.Height) / 2f;
+                            position.X += (int)delta.X;
+                            position.Y += (int)delta.Y;
+                            position.Width = dotSize.Width;
+                            position.Height = dotSize.Height;
+                            _spriteBatch.Draw(_sheet.Sheet, position, _sheet["EndPoint_Blue"], Color.White);
+                            position.Width = position.Height = tileSize;
+                            break;  
                         case 'X':
-                            _spriteBatch.Draw(wall, position, Color.White);
+                            //_spriteBatch.Draw(wall, position, Color.White);
+                            _spriteBatch.Draw(_sheet.Sheet, position, _sheet["Wall_Black"], Color.White);
+
                             break;
                     }
                 }
             }
 
+            // Draw the boxes
             foreach (Point b in boxes)
             {
                 position.X = b.X * tileSize;
                 position.Y = b.Y * tileSize;
-                _spriteBatch.Draw(box, position, Color.White);
+                //_spriteBatch.Draw(box, position, Color.White);
+                //BOX
+                //Texture2D sheet = _sheet.Sheet;
+                //Rectangle sheetPos = _sheet["Crate_Brown"];
+                //_spriteBatch.Draw(sheet, position, sheetPos, Color.White);
+
+                _spriteBatch.Draw(_sheet.Sheet, position, _sheet["Crate_Brown"], Color.White);
             }
 
             _spriteBatch.DrawString(font, // Tipo de letra

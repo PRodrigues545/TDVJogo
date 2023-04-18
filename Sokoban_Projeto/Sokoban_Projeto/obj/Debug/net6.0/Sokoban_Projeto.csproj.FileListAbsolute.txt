@@ -40,3 +40,7 @@ C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Conten
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Character9.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\File1.xnb
 C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\level2.txt
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\sokoban_ss.xnb
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\sokoban_ss.json
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Content\Wall_Black.png
+C:\Programação\TDVJogo\Sokoban_Projeto\Sokoban_Projeto\bin\Debug\net6.0\Newtonsoft.Json.dll
