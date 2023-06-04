@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programação\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj": {}
+    "C:\\Programação\\TDV\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj": {}
   },
   "projects": {
-    "C:\\Programação\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj": {
+    "C:\\Programação\\TDV\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programação\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj",
+        "projectUniqueName": "C:\\Programação\\TDV\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj",
         "projectName": "Sokoban_Projeto",
-        "projectPath": "C:\\Programação\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj",
+        "projectPath": "C:\\Programação\\TDV\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\Sokoban_Projeto.csproj",
         "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
-        "outputPath": "C:\\Programação\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\obj\\",
+        "outputPath": "C:\\Programação\\TDV\\TDVJogo\\Sokoban_Projeto\\Sokoban_Projeto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",

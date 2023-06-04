@@ -38,7 +38,7 @@ namespace Sokoban_Projeto
         // - Draw(player)
         // - LoadContents(player)
 
-        public Player(Game1 game1, int x, int y) //constructor que dada a as +osições guarda a sua posição
+        public Player(Game1 game1, int x, int y) //constructor que dada a as posições guarda a sua posição
         {
             position = new Point(x, y);
             game = game1;
